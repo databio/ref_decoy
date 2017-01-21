@@ -9,3 +9,15 @@ Build genome references for these decoy sequences using [refgenie](http://github
 ```
 refgenie.py -i hg19_alphasat.fa
 ```
+
+A complete setup:
+
+```
+GENOMES=$RESOURCES/genomes
+
+pip install --user --upgrade https://github.com/epigen/pypiper/zipball/master
+git clone https://github.com/databio/ref_decoy.git
+git clone https://github.com/databio/refgenie.git
+
+for fa_file in `ls ref_decoy/*.fa`; do python refgenie/src/refgenie.py -i $fa_file; done
+```

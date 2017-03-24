@@ -25,6 +25,10 @@ git clone https://github.com/databio/refgenie.git
 
 for fa_file in `ls ref_decoy/*.fa`; do python refgenie/src/refgenie.py -i $fa_file; done
 ```
+Or, using the refgenie docker image:
+```
+for fa_file in `ls ref_decoy/*.fa`; do python refgenie/src/refgenie.py -d -i $fa_file; done
+```
 
 ## Assembly info
 

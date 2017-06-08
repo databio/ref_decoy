@@ -1,18 +1,30 @@
 # Genome assembly decoy sequences
 
-This repository contains decoy fasta files for alignments.
+This repository contains fasta files for pre-alignments. These are useful for studies of repeats, mtDNA, or using as decoy sequences.
 
 ## Contents:
 
-* alphasat - Manually curated sequences from GenBank annotated for centromeric or alpha-satellite DNA repeats.
-* chrMx - Doubled chrM (chrM sequence pasted 2 times, one right after another) to simulate circular DNA for aligners that do not have a circular setting
-* rDNA - Complete human ribosomal repeat unit
-* alu - Alu elements
+### Repeats
+
+* human_alu.fa - Manually curated sequences from GenBank for alu elements.
+* human_alphasat.fa - Manually curated sequences from GenBank annotated for centromeric or alpha-satellite DNA repeats.
+* human_rDNA.fa - Complete human ribosomal repeat unit
+* human_repeats.fa: a combination of the 3 of above (alu, alphasat, and rDNA) , produced with `cat human_alu.fa human_alphasat.fa human_rDNA.fa > human_repeats.fa`.
+
+### mtDNA
+
+* rCRSd.fa is the Revised Cambridge Reference Sequence (rCRS) of the Human Mitochondrial DNA obtained from [NC_012920](http://www.ncbi.nlm.nih.gov/nuccore/251831106). It is duplicated (pasted 2 times, one right after another) to simulate circular DNA for aligners that do not have a circular setting (hence the appended `d` to the name). This is the assembly used in hg38.
+* RSRS.fa is from [this paper](http://dx.doi.org/10.1016/j.ajhg.2012.03.002).
+* eve1.fa is from [this paper](http://dx.doi.org/10.1093/nar/gkm207).
+* chrMx - Doubled chrM derived from [AF347015](http://www.ncbi.nlm.nih.gov/nuccore/13273284), the African Yoruban sequence used in the hg19 assembly.
 
 ## Pre-built indexes
 
 You can download pre-built [refgenie](http://www.github.com/databio/refgenie) reference genomes indexes for use in pipelines here:
-* [Pre-built decoy indexes](http://obx.cphg.virginia.edu/swift/refgenome.php?assembly=refdecoy)
+
+* [list of pre-built indexes](http://cloud.databio.org/refgenomes/)
+
+To use these with [pypiper](http://www.databio.org/pypiper) pipelines, just unzip the folder and place in your genomes folder (e.g. `$GENOMES`).
 
 ## Built it yourself
 
@@ -25,7 +37,7 @@ refgenie.py -i hg19_alphasat.fa
 A complete setup:
 
 ```
-GENOMES=$RESOURCES/genomes
+GENOMES=decoy_genomes
 
 pip install --user --upgrade https://github.com/epigen/pypiper/zipball/master
 git clone https://github.com/databio/ref_decoy.git
@@ -33,11 +45,10 @@ git clone https://github.com/databio/refgenie.git
 
 for fa_file in `ls ref_decoy/*.fa`; do python refgenie/src/refgenie.py -i $fa_file; done
 ```
-Or, using the refgenie docker image:
+
+Or, using the refgenie docker image (adds `-d`):
+
 ```
 for fa_file in `ls ref_decoy/*.fa`; do python refgenie/src/refgenie.py -d -i $fa_file; done
 ```
 
-## Assembly info
-
-These decoy sequences aren't actually relative to an assembly (e.g. hg19) but to an organism (e.g. human). At the moment I'm naming them relative to the assembly, though, (e.g. `hg19_alphasat`), so that programmatic software can easily find them (it is given the string `hg19` and can derive the decoy folders as needed). Thus the `hg38` versions are just symlinks to the `hg19` versions. It's a bit of a hack --  they have to be duplicated so the tool can find them if you're using hg19 or hg38.

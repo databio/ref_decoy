@@ -22,7 +22,7 @@ This repository contains fasta files for pre-alignments. These are useful for st
 
 You can download pre-built [refgenie](http://www.github.com/databio/refgenie) reference genomes indexes for use in pipelines here:
 
-* [list of pre-built indexes](http://cloud.databio.org/refgenomes/)
+* [list of pre-built indexes](http://big.databio.org/refgenomes/)
 
 To use these with [pypiper](http://www.databio.org/pypiper) pipelines, just unzip the folder and place in your genomes folder (e.g. `$GENOMES`).
 

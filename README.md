@@ -9,6 +9,7 @@ This repository contains fasta files for pre-alignments. These are useful for st
 * human_alu.fa - Manually curated sequences from GenBank for alu elements.
 * human_alphasat.fa - Manually curated sequences from GenBank annotated for centromeric or alpha-satellite DNA repeats.
 * human_rDNA.fa - Complete human ribosomal repeat unit
+* mouse_rDNA.fa - Complete mouse ribosomal repeat unit (from GenBank).
 * human_repeats.fa: a combination of the 3 of above (alu, alphasat, and rDNA) , produced with `cat human_alu.fa human_alphasat.fa human_rDNA.fa > human_repeats.fa`.
 
 ### mtDNA

@@ -17,7 +17,8 @@ This repository contains fasta files for pre-alignments. These are useful for st
 * rCRSd.fa is the Revised Cambridge Reference Sequence (rCRS) of the Human Mitochondrial DNA obtained from [NC_012920](http://www.ncbi.nlm.nih.gov/nuccore/251831106). It is duplicated (pasted 2 times, one right after another) to simulate circular DNA for aligners that do not have a circular setting (hence the appended `d` to the name). This is the assembly used in hg38.
 * RSRS.fa is from [this paper](http://dx.doi.org/10.1016/j.ajhg.2012.03.002).
 * eve1.fa is from [this paper](http://dx.doi.org/10.1093/nar/gkm207).
-* chrMx - Doubled chrM derived from [AF347015](http://www.ncbi.nlm.nih.gov/nuccore/13273284), the African Yoruban sequence used in the hg19 assembly.
+* human_chrM2x - Doubled chrM derived from [AF347015](http://www.ncbi.nlm.nih.gov/nuccore/13273284), the African Yoruban sequence used in the hg19 assembly.
+* mouse_chrM2x - Doubled chrM derived from mm10 reference.
 
 ## Pre-built indexes
 
